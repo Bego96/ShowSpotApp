@@ -57,6 +57,7 @@
   border-bottom-right-radius: 15px;
   background-color: rgba(85, 85, 85, 0.5);
   padding-left: 10px;
+  color: white;
 }
 
 #searchBar::placeholder {
@@ -70,4 +71,46 @@
 
 }
 
+.container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 50px;
+  font-family: "Roboto", sans-serif;
+}
+
+
+.imgContainer {
+  width: 100%;
+}
+
+.imgContainer > .img {
+  width: 100%;
+}
+
+.cardDesc {
+  color: white;
+}
+
+.cardDesc > .cardTitle {
+  font-weight: 600;
+}
+
+
+
+ 
+@media only screen and (max-width: 481px) {
+  
+}
+ 
+ 
+
+@media only screen and (max-width: 769px) {
+ 
+}
+ 
+ 
+
+@media only screen and (max-width: 1026px) {
+ 
+}
 
