@@ -1,6 +1,10 @@
 #navigation {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+#mainContainer {
+  font-family: "Roboto", sans-serif;
 }
 
 #title {
@@ -10,25 +14,39 @@
   font-style: normal;
   color: white;
   font-size: 36px;
+  margin-top: 40px;
+  margin-bottom: 80px;
 }
 
-.navBtn {
+#menu a.navBtn {
   border: 1px solid white;
   color: white;
   background-color: transparent;
-  width: 143px;
-  height: 36px;
   cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
+
+
+#menu a.active {
+  background-color: red;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid white;
+  color: white;
 }
 
 #moviesBtn {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  padding: 10px 55px;
 }
 
 #tvShowsBtn {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+  padding: 10px 55px;
 }
 
 .navBtn:active {
@@ -49,16 +67,17 @@
 #searchBar {
   box-sizing: border-box;
   width: 100%;
-  height: 42px;
+  height: 54px;
   border: 1px solid white;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: rgba(85, 85, 85, 0.5);
-  padding-left: 10px;
+  padding-left: 14px;
   color: white;
 }
+
 
 #searchBar::placeholder {
   color: white;
@@ -66,16 +85,23 @@
 
 #searchContainer > #searchIcon {
   position: absolute;
-  top: 10px;
-  right: 7px;
-
+  top: 14px;
+  right: 10px;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   grid-gap: 50px;
-  font-family: "Roboto", sans-serif;
+}
+
+
+.container a {
+  text-decoration: none;
+}
+
+.container a .card .cardDesc {
+  color: white;
 }
 
 
@@ -87,30 +113,46 @@
   width: 100%;
 }
 
-.cardDesc {
-  color: white;
-}
 
-.cardDesc > .cardTitle {
+
+.card > .cardDesc > .cardTitle {
   font-weight: 600;
 }
 
-
-
- 
-@media only screen and (max-width: 481px) {
-  
+.cardPageContainer  {
+  color: white;
 }
- 
- 
 
-@media only screen and (max-width: 769px) {
- 
-}
- 
- 
 
 @media only screen and (max-width: 1026px) {
- 
+  .container {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
+
+ 
+@media only screen and (max-width: 769px) {
+  .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #menu {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  #moviesBtn {
+    padding: 10px 35px;
+  }
+
+  #tvShowsBtn {
+    padding: 10px 25px;
+  }
+
+}
