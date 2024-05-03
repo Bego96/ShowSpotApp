@@ -1,12 +1,13 @@
-import { MdOutlineArrowDropDown } from "react-icons/md";
-
+import { NavLink } from "react-router-dom";
+import Search from "./search";
 export default function Navbar() {
   return (
     <nav id="navigation">
         <div id="menu">
-            <button className="navBtn" id="moviesBtn">Movies</button>
-            <button className="navBtn" id="tvShowsBtn">TV Shows</button>
+            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'navBtn')} id="moviesBtn">Movies</NavLink>
+            <NavLink to="/TVShows" className={({ isActive }) => (isActive ? 'active' : 'navBtn')} id="tvShowsBtn">TV Shows</NavLink>
         </div>
+        <Search/>
     </nav>
   )
 }
