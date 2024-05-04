@@ -27,7 +27,6 @@ export default function Movies(): JSX.Element {
            })
     }, []);
     
-    console.log(data)
     return (
         <div>
             <div className='container'>
