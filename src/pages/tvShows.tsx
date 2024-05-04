@@ -28,7 +28,7 @@ export default function TVShows(): JSX.Element {
            })
     }, []);
 
-    console.log(data);
+    
     return (
         <div>
             <div className='container'>

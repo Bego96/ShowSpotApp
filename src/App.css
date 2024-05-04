@@ -123,6 +123,11 @@
   color: white;
 }
 
+.movieDetails {
+  margin-top: 80px;
+  width: 75%;
+}
+
 
 @media only screen and (max-width: 1026px) {
   .container {
