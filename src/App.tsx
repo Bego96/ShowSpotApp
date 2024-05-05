@@ -18,8 +18,8 @@ function App(): JSX.Element {
         <BrowserRouter>
         <Navbar/>
           <Routes>
-            <Route path='/' element={<Movies />}/>
-            <Route path='/TVShows' element={<TVShows />}/>
+            <Route path='/' element={<TVShows />}/>
+            <Route path='/Movies' element={<Movies />}/>
             <Route path='/:type/:id' element={<CardPage />}/>
             <Route path='/:type/:id' element={<CardPage />}/>
           </Routes>

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export default function Card({id, img, title,release_date, type}:any) {
- 
+  
   return (
     <Link to={`/${type}/${id}`} >
     <div className='card'>

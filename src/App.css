@@ -1,7 +1,4 @@
-#navigation {
-  margin-top: 20px;
-  margin-bottom: 80px;
-}
+
 
 #mainContainer {
   font-family: "Roboto", sans-serif;
@@ -60,7 +57,7 @@
 
 #searchContainer {
 
-  margin-top: 20px;
+  margin: 40px 0;
   position: relative;
 }
 
@@ -124,15 +121,26 @@
 }
 
 .movieDetails {
-  margin-top: 80px;
+  margin: 80px 0;
   width: 75%;
 }
 
+.movieDetails > h2 {
+  margin-bottom: 40px;
+}
+
+.videoPlayer {
+  overflow: hidden;
+  width: 80%;
+  height: 500px;
+}
 
 @media only screen and (max-width: 1026px) {
   .container {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  
 }
 
 
@@ -145,6 +153,8 @@
   #menu {
     text-align: center;
   }
+
+  
 }
 
 @media only screen and (max-width: 481px) {
