@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 interface MovieDetails {
-    "overview": string
+    "overview": string,
+    "original_title": string
 }
 export default function MovieDetails({id, type}:any) {
 
@@ -22,8 +23,10 @@ export default function MovieDetails({id, type}:any) {
                })
     },[])
 
+    console.log(details)
   return (
     <div className='movieDetails'>
+        <h2>{details?.original_title}</h2>
         <p>{details?.overview}</p>
     </div>
   )

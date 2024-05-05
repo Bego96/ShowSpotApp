@@ -1,37 +1,43 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/card';
+import { useMoviesStore } from '../store/moviesStore';
+import Search from '../components/search';
 
-export interface Movie {
-    id: number,
-    title: string,
-    poster_path: string,
-    release_date: string,
-    overview:string,
-}
-
-const type = 'movie'
+const type = 'movie';
 
 export default function Movies(): JSX.Element {
-    const [data, setData] = useState<Movie[]>();
+    const { movies, setMovies } = useMoviesStore((state) => ({
+        movies: state.movies,
+        type: state.type,
+        setMovies: state.setMovies
+    }));
 
     useEffect(() => {
-        const apikey = process.env.REACT_APP_API_KEY
-        const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`
+        const fetchData = async () => {
+            try {
+                const apikey = process.env.REACT_APP_API_KEY;
+                const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`;
+                
+                const response = await axios.get(url);
+                const result = response.data.results;
+                setMovies(result);
+            } catch (error) {
+                console.error('Error fetching movies:', error);
+            }
+        };
 
-        axios.get(url)
-           .then((response) => {
-            const result = response.data.results;
-            console.log("RESULT " + response)
-            setData(result);
-           })
+        fetchData();
     }, []);
-    
+
+    console.log(movies);
+
     return (
         <div>
+            <Search/>
             <div className='container'>
-                {data && data ? (
-                    data.map(movie => (
+                {movies.length > 0 ? (
+                    movies.map(movie => (
                         <Card key={movie.id} id={movie.id} type={type} img={movie.poster_path} title={movie.title} release_date={movie.release_date}/>
                     ))
                 ) : (
@@ -39,5 +45,5 @@ export default function Movies(): JSX.Element {
                 )}
             </div>
         </div>
-    )
+    );
 }
