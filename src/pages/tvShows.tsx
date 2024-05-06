@@ -1,43 +1,37 @@
 import { useEffect } from 'react';
-import axios from 'axios';
 import Card from '../components/card';
 import { useTVShowsStore } from '../store/tvShowsStore';
 import Search from '../components/search';
+import { useSearchStore } from '../store/searchStore';
 
 const type = 'tv';
 
 export default function TVShows(): JSX.Element {
-    const { tvShows, setTVShows } = useTVShowsStore(
+    const { searchPattern} = useSearchStore();
+    const { tvShows, setTVShows, queryTVShows, fetchTVShows } = useTVShowsStore(
         (state) => ({
             tvShows: state.tvShows,
             type: state.type,
-            setTVShows: state.setTVShows
+            setTVShows: state.setTVShows,
+            queryTVShows: state.queryTVShows,
+            fetchTVShows: state.fetchTVShows
         })
     );
     
     useEffect(() => {
 
-        const fetchData = async () => {
-            try {
-                const apikey = process.env.REACT_APP_API_KEY;
-                const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`;
-
-                const response = await axios.get(url);
-                const result = response.data.results;
-                setTVShows(result);
-            } catch (error) {
-                console.error('Error fetching TV shows:', error);
-            }
-        };
-
-        if (tvShows.length === 0) {
-            fetchData();
+        if (searchPattern) {
+            queryTVShows(searchPattern);
+        } else {
+            fetchTVShows();
         }
+    
         
     }, []);
 
     return (
         <div>
+            <Search />
             <div className='container'>
                 {tvShows && tvShows.length > 0 ? (
                     tvShows.map(tvShow => (
