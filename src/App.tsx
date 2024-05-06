@@ -21,7 +21,6 @@ function App(): JSX.Element {
             <Route path='/' element={<TVShows />}/>
             <Route path='/Movies' element={<Movies />}/>
             <Route path='/:type/:id' element={<CardPage />}/>
-            <Route path='/:type/:id' element={<CardPage />}/>
           </Routes>
         </BrowserRouter>
       </div>

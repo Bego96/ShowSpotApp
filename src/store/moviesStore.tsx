@@ -1,6 +1,8 @@
 import { create } from "zustand";
+import axios from "axios";
 import { Movie } from "../interfaces/interfaces";
 
+const apikey = process.env.REACT_APP_API_KEY;
 
 interface MoviesState {
     movies: Movie[];
@@ -9,6 +11,8 @@ interface MoviesState {
 
 interface MoviesActions {
     setMovies: (movies: Movie[]) => void;
+    fetchMovies: () => Promise<void>;
+    queryMovies: (value: string) => Promise<void>;
 }
 
 export interface MoviesStore extends MoviesState, MoviesActions {}
@@ -16,8 +20,26 @@ export interface MoviesStore extends MoviesState, MoviesActions {}
 export const useMoviesStore = create<MoviesStore>((set) => ({
     movies: [],
     type: "movie",
-    setMovies: (newMovies) => set((state: MoviesState) => {
-        const filteredMovies = newMovies.filter(newMovie => !state.movies.some(existingMovie => existingMovie.id === newMovie.id));
-        return { movies: [...state.movies, ...filteredMovies] };
-    })
+    setMovies: (newMovies) => set({ movies: newMovies }),
+    fetchMovies: async () => {
+        try {
+            const type = "movie"; // or "tv" or whatever type you want
+            const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`;
+            const response = await axios.get(url);
+            const result = response.data.results;
+            set({ movies: result });
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+        }
+    },
+    queryMovies: async (value: string) => {
+        try {
+            const url = `https://api.themoviedb.org/3/search/movie?query=${value}&api_key=${apikey}`;
+            const response = await axios.get(url);
+            const result = response.data.results;
+            set({ movies: result }); // Update movies array with queried data
+        } catch (error) {
+            console.error("Error fetching Movies:", error);
+        }
+    }
 }));
