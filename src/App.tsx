@@ -17,6 +17,7 @@ function App(): JSX.Element {
       <div id="mainContainer">
         <BrowserRouter>
         <Navbar/>
+        <Search/>
           <Routes>
             <Route path='/' element={<TVShows />}/>
             <Route path='/Movies' element={<Movies />}/>

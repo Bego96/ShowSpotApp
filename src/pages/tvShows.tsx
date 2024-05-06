@@ -16,6 +16,7 @@ export default function TVShows(): JSX.Element {
     );
     
     useEffect(() => {
+
         const fetchData = async () => {
             try {
                 const apikey = process.env.REACT_APP_API_KEY;
@@ -29,12 +30,14 @@ export default function TVShows(): JSX.Element {
             }
         };
 
-        fetchData();
+        if (tvShows.length === 0) {
+            fetchData();
+        }
+        
     }, []);
 
     return (
         <div>
-             <Search/>
             <div className='container'>
                 {tvShows && tvShows.length > 0 ? (
                     tvShows.map(tvShow => (

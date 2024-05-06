@@ -13,7 +13,10 @@ export default function Movies(): JSX.Element {
         setMovies: state.setMovies
     }));
 
+    console.log(movies)
+
     useEffect(() => {
+
         const fetchData = async () => {
             try {
                 const apikey = process.env.REACT_APP_API_KEY;
@@ -27,14 +30,17 @@ export default function Movies(): JSX.Element {
             }
         };
 
-        fetchData();
+        if (movies.length === 0) {
+            fetchData();
+        }   
+        
+
     }, []);
 
     console.log(movies);
 
     return (
         <div>
-            <Search/>
             <div className='container'>
                 {movies.length > 0 ? (
                     movies.map(movie => (

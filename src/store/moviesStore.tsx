@@ -16,8 +16,5 @@ export interface MoviesStore extends MoviesState, MoviesActions {}
 export const useMoviesStore = create<MoviesStore>((set) => ({
     movies: [],
     type: "movie",
-    setMovies: (newMovies) => set((state: MoviesState) => {
-        const filteredMovies = newMovies.filter(newMovie => !state.movies.some(existingMovie => existingMovie.id === newMovie.id));
-        return { movies: [...state.movies, ...filteredMovies] };
-    })
+    setMovies: (newMovies) => set({ movies: newMovies })
 }));

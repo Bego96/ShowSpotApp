@@ -16,8 +16,5 @@ export interface TVShowsStore extends TVShowsState, TVShowsActions {}
 export const useTVShowsStore = create<TVShowsStore>((set) => ({
     tvShows: [],
     type: "tv",
-    setTVShows: (newTVShows) => set((state: TVShowsState) => {
-        const filteredTVShows = newTVShows.filter(newTVShow => !state.tvShows.some(existingTVShow => existingTVShow.id === newTVShow.id));
-        return { tvShows: [...state.tvShows, ...filteredTVShows] };
-    })
+    setTVShows: (newTVShows) => set({ tvShows: newTVShows })
 }));
