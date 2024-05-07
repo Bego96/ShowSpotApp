@@ -26,7 +26,8 @@ export const useTVShowsStore = create<TVShowsStore>((set) => ({
             const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`;
             const response = await axios.get(url);
             const result = response.data.results;
-            set({ tvShows: result });
+            const top10 = result.splice(0, 10);
+            set({ tvShows: top10 });
         } catch (error) {
             console.error("Error fetching TV shows:", error);
         }
@@ -36,7 +37,8 @@ export const useTVShowsStore = create<TVShowsStore>((set) => ({
             const url = `https://api.themoviedb.org/3/search/tv?query=${value}&api_key=${apikey}`;
             const response = await axios.get(url);
             const result = response.data.results;
-            set({ tvShows: result });
+            const top10 = result.splice(0, 10);
+            set({ tvShows: top10 });
         } catch (error) {
             console.error("Error fetching TV shows:", error);
         }

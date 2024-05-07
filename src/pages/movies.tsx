@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../components/card';
 import { useMoviesStore } from '../store/moviesStore';
 import Search from '../components/search';
 import { useSearchStore } from '../store/searchStore';
+import { Movie } from '../interfaces/interfaces';
 
 const type = 'movie';
 
@@ -16,6 +17,8 @@ export default function Movies(): JSX.Element {
         fetchMovies: state.fetchMovies,
         queryMovies: state.queryMovies
     }));
+    
+
 
     console.log(movies)
 
