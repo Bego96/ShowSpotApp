@@ -27,7 +27,8 @@ export const useMoviesStore = create<MoviesStore>((set) => ({
             const url = `https://api.themoviedb.org/3/discover/${type}?api_key=${apikey}`;
             const response = await axios.get(url);
             const result = response.data.results;
-            set({ movies: result });
+            const top10 = result.splice(0, 10);
+            set({ movies: top10 });
         } catch (error) {
             console.error("Error fetching movies:", error);
         }
@@ -37,7 +38,8 @@ export const useMoviesStore = create<MoviesStore>((set) => ({
             const url = `https://api.themoviedb.org/3/search/movie?query=${value}&api_key=${apikey}`;
             const response = await axios.get(url);
             const result = response.data.results;
-            set({ movies: result }); // Update movies array with queried data
+            const top10 = result.splice(0, 10);
+            set({ movies: top10 });
         } catch (error) {
             console.error("Error fetching Movies:", error);
         }

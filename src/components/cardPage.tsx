@@ -56,10 +56,6 @@ export default function CardPage() {
     fetchImage();
   }, [id, type]);
 
-  const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo();
-  };
 
   const opts: YouTubeProps['opts'] = {
     width:
