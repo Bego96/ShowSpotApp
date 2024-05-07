@@ -1,3 +1,9 @@
+*** SCROLL DOWN BELLOW FOR RUNNING TASK INSTRUCTIONS! ***
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -42,5 +48,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+*** ABOUT PROJECT AND INSTRUCTIONS HOW TO RUN ***
+
+Project was built with React using Typescript and state management Zustand. Reason why i chose Zustand is i believe it's good enough for smaller task like this so other state
+management system's like Redux which are more powerful are better for bigger projects. 
+
+As described in task i have used all necessary fetching end points for listing movies, tvshows and their details including quering for search engine. Which you can find in code. 
+
+I have used separation of concerns and divided components from pages, stores, interfaces and vice versa so every different type of files are separated from each other for better readability and cleaner folder structure. 
+
+*How to run:*
+Simply in therminal use `npm start` command and project will start. Keep in mind that considering i had to use `API Key` from own account on moviesdb webpage, i stored it in a `.env` file. So for that matter please eihter use your `API key` and place it under a `.env` file or inside of code. I dont know any other way to implement that as moviesdb requires `API key` in order to have authorized access to get methods for end points. 
+Other alternative way to access the project is by going to https://show-spot-app.vercel.app/ Vercel page where i deployed it. Thanks to Vercel's environment variables, anyone can view the content on the page.
+
