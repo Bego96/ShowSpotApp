@@ -135,12 +135,23 @@
   height: 500px;
 }
 
+.movieImg {
+  width: 30%;
+}
+
+.movieImg > img {
+  width: 100%;
+}
+
+
 @media only screen and (max-width: 1026px) {
   .container {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  
+  .movieImg {
+    width: 50%;
+  }
 }
 
 
@@ -154,7 +165,17 @@
     text-align: center;
   }
 
-  
+  .movieImg {
+    width: 65%;
+    
+  }
+
+  .movieDetails {
+    
+    width: 80%;
+  }
+
+ 
 }
 
 @media only screen and (max-width: 481px) {
@@ -170,4 +191,11 @@
     padding: 10px 25px;
   }
 
+  .movieImg {
+    width: 100%;
+  }
+
+  .movieDetails {
+    width: 100%;
+  }
 }

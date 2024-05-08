@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect} from 'react';
 import Card from '../components/card';
 import { useMoviesStore } from '../store/moviesStore';
 import Search from '../components/search';
 import { useSearchStore } from '../store/searchStore';
-import { Movie } from '../interfaces/interfaces';
+import { useLayoutEffect } from 'react';
 
 const type = 'movie';
 
-export default function Movies(): JSX.Element {
+export default function Movies({setShowNav}: any): JSX.Element {
+
+    useLayoutEffect(() => {
+        setShowNav(true);
+      }, [])
+
     const { searchPattern} = useSearchStore();
     const { movies, setMovies, fetchMovies, queryMovies } = useMoviesStore((state) => ({
         movies: state.movies,
@@ -18,9 +22,6 @@ export default function Movies(): JSX.Element {
         queryMovies: state.queryMovies
     }));
     
-
-
-    console.log(movies)
 
     useEffect(() => {
 

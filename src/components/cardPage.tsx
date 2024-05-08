@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import { IoIosArrowRoundBack } from 'react-icons/io';
 import YouTube, { YouTubeProps } from 'react-youtube';
 import MovieDetails from './movieDetails';
+import { useLayoutEffect } from 'react';
 
 export interface Video {
   key: string;
@@ -15,10 +16,16 @@ export interface Image {
   poster_path: string;
 }
 
-export default function CardPage() {
+export default function CardPage({setShowNav}: any) {
+  
   const { id, type } = useParams();
   const [video, setVideo] = useState<Video | null>(null);
   const [image, setImage] = useState<Image | null>(null);
+
+
+  useLayoutEffect(() => {
+    setShowNav(false);
+  }, [])
 
   useEffect(() => {
     const apikey = process.env.REACT_APP_API_KEY;
@@ -60,7 +67,7 @@ export default function CardPage() {
   const opts: YouTubeProps['opts'] = {
     width:
       window.screen.width > 1300
-        ? '1280'
+        ? '1200'
         : window.screen.width > 790
         ? '768'
         : window.screen.width > 550
@@ -86,10 +93,12 @@ export default function CardPage() {
       </Link>
 
       {video ? (
-        <YouTube videoId={video.key} opts={opts} />
+        
+          <YouTube videoId={video.key} opts={opts} className='video'/>
+       
       ) : (
-        <div>
-          <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt="Movie Poster" />
+        <div className='movieImg'>
+          <img src={`https://image.tmdb.org/t/p/w500/${image}`} alt="Movie Poster"/>
         </div>
       )}
 

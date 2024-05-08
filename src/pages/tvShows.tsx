@@ -3,12 +3,17 @@ import Card from '../components/card';
 import { useTVShowsStore } from '../store/tvShowsStore';
 import Search from '../components/search';
 import { useSearchStore } from '../store/searchStore';
+import { useLayoutEffect } from 'react';
 
 const type = 'tv';
 
-export default function TVShows(): JSX.Element {
+export default function TVShows({setShowNav}: any): JSX.Element {
+    useLayoutEffect(() => {
+        setShowNav(true);
+      }, [])
+
     const { searchPattern} = useSearchStore();
-    const { tvShows, setTVShows, queryTVShows, fetchTVShows } = useTVShowsStore(
+    const { tvShows, queryTVShows, fetchTVShows } = useTVShowsStore(
         (state) => ({
             tvShows: state.tvShows,
             type: state.type,
